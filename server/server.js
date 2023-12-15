@@ -21,10 +21,7 @@ const __dirname = path.resolve();
 const app = express();
 
 //middelwares
-const corsOption= { 
-    origin:"http://localhost:5173",
-    optionSuccessStatus: 200,
-};
+
 
 app.use(cors(corsOption));
 app.use(express.json());
