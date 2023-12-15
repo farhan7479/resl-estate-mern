@@ -23,7 +23,8 @@ const app = express();
 //middelwares
 
 
-app.use(cors(corsOption));
+
+
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
