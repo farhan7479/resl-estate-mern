@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { app } from "../firebase";
+import { useDispatch } from 'react-redux';
+import { signInSuccess } from '../redux/user/userSlice';
 import {
   getAuth,
   RecaptchaVerifier,
@@ -13,6 +15,7 @@ const PhoneSignUp = () => {
   const [flag, setFlag] = useState(false);
   const auth = getAuth(app);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const configureCaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(auth, "sign-in-button", {
@@ -58,11 +61,13 @@ const PhoneSignUp = () => {
       const result = await window.confirmationResult.confirm(code);
       const user = result.user;
       setFlag(true);
-      if(user) {
-        navigate("/")
-      }
+     
+      
+      dispatch(signInSuccess(user));
+     
 
       console.log(JSON.stringify(user));
+      navigate("/")
       
     } catch (error) {
       console.error("Error verifying OTP:", error);
@@ -95,12 +100,12 @@ const PhoneSignUp = () => {
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
         >
-          Verify Phone No.
+          Click for Otp
         </button>
       </form>
         
       <h2 className="text-2xl font-semibold mt-8">Enter OTP</h2>
-      <form onSubmit={onSubmitOTP} className="space-y-4">
+      <form onSubmit={onSubmitOTP} className="space-y-4 p-3" >
         <input
           type="number"
           name="otp"
@@ -113,7 +118,7 @@ const PhoneSignUp = () => {
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
         >
-          Submit
+          Verify Otp
         </button>
       </form>
     </div>
