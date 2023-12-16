@@ -81,6 +81,7 @@ export default function SignUp() {
         <Link to={'/sign-in'}>
           <span className='text-blue-700'>Sign in</span>
         </Link>
+        Or
         <Link to={'/phone-signup'}>
           <span className='text-blue-700'>Login with Phone Number</span>
         </Link>
