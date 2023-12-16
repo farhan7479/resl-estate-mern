@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 
 import path from 'path';
 
-import cors from "cors";
+
 
 //configure env
 dotenv.config();
@@ -50,13 +50,10 @@ app.get('*', (req, res) => {
 })
 
 
-//rest api
-app.get("/", (req, res) => {
-  res.send("<h1>Welcome to ecommerce app</h1>");
-});
+
 
 //PORT
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 
 //run listen
 app.listen(PORT, () => {
