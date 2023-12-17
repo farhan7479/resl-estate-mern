@@ -11,6 +11,7 @@ import Listing from "./pages/Listing";
 import UpdateListing from "./pages/UpdateListing";
 import Search from "./pages/Search";
 import PhoneSIgnUp from "./components/PhoneSIgnUp";
+import Favourite from "./pages/Favoutite";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/listing/:listingId" element={<Listing />} />
         <Route path='/search' element={<Search />} />
         <Route path='/phone-signup' element={<PhoneSIgnUp/>} />
+        <Route path='/favourite' element={<Favourite/>} />
         
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />

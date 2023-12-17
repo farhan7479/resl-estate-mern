@@ -12,7 +12,7 @@ import {
 const PhoneSignUp = () => {
   const [mobile, setMobile] = useState("");
   const [otp, setOtp] = useState("");
-  const [flag, setFlag] = useState(false);
+  
   const auth = getAuth(app);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -60,14 +60,28 @@ const PhoneSignUp = () => {
     try {
       const result = await window.confirmationResult.confirm(code);
       const user = result.user;
-      setFlag(true);
      
+
+      const res = await fetch('/api/auth/phone-signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          phone : user.phone
+        
+          
+        }),
+      });
+      const data = await res.json();
+      dispatch(signInSuccess(data));
+      navigate('/');
       
-      dispatch(signInSuccess(user));
+      
      
 
       console.log(JSON.stringify(user));
-      navigate("/")
+      
       
     } catch (error) {
       console.error("Error verifying OTP:", error);
