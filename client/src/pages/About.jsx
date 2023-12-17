@@ -1,5 +1,5 @@
 import React from 'react'
-import PhoneSIgnUp from '../components/PhoneSIgnUp'
+
 const About = () => {
   return (
     
