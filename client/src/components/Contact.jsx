@@ -53,7 +53,7 @@ export default function Contact({ listing }) {
               Send Via WhatsApp
             </Link>
           ) : (
-            <p>First Update Phone No. </p>
+            null
           )}
          
           <Link
