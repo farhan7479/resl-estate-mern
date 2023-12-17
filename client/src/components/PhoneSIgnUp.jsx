@@ -12,7 +12,7 @@ import {
 const PhoneSignUp = () => {
   const [mobile, setMobile] = useState("");
   const [otp, setOtp] = useState("");
-  
+  const [loading, setLoading] = useState(false);
   const auth = getAuth(app);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -41,6 +41,7 @@ const PhoneSignUp = () => {
         phoneNumber,
         appVerifier
       );
+      setLoading(true);
 
       // Save the confirmation result for later use (e.g., verifying OTP)
       window.confirmationResult = confirmationResult;
@@ -111,10 +112,11 @@ const PhoneSignUp = () => {
           className="border p-2 rounded-md"
         />
         <button
-          type="submit"
+          type="submit" disabled = {loading}
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
         >
-          Click for Otp
+           Click For OTP
+          
         </button>
       </form>
         
@@ -128,10 +130,12 @@ const PhoneSignUp = () => {
           onChange={handleChange}
           className="border p-2 rounded-md"
         />
-        <button
-          type="submit"
+        <button 
+          type="submit" 
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+         
         >
+          
           Verify Otp
         </button>
       </form>
