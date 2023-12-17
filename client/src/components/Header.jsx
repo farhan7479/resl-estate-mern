@@ -58,11 +58,11 @@ export default function Header() {
             </li>
           </Link>
           <Link to='/favourite'>
-            {currentUser ? (
-              <li className='hidden sm:inline text-slate-700 hover:underline'>
-                Your favourite
+             
+              <li className=' sm:inline text-slate-700 hover:underline'>
+               favourite
             </li>
-            ) : null }
+            
           </Link>
           <Link to='/profile'>
             {currentUser ? (

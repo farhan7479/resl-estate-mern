@@ -16,7 +16,7 @@ const Favourite = () => {
       <h2 className="text-2xl font-semibold mb-4">Favourite Items</h2>
       {favourites.map((item) => (
         <div key={item._id} className="border p-4 mb-8 flex items-center justify-center">
-          {/* Image */}
+        
           {item.imageUrls && item.imageUrls.length > 0 && (
             <img
               src={item.imageUrls[0]} // Display the first image from the array
