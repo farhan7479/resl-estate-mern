@@ -29,7 +29,9 @@ const PhoneSignUp = () => {
   };
 
   const onSignInSubmit = async (e) => {
+
     e.preventDefault();
+    setLoading(true);
     configureCaptcha();
     const phoneNumber = "+91" + mobile;
     console.log(phoneNumber);
@@ -41,7 +43,7 @@ const PhoneSignUp = () => {
         phoneNumber,
         appVerifier
       );
-      setLoading(true);
+      setLoading(false)
 
       // Save the confirmation result for later use (e.g., verifying OTP)
       window.confirmationResult = confirmationResult;
@@ -101,7 +103,7 @@ const PhoneSignUp = () => {
   return (
     <div className="max-w-md mx-auto my-10 p-6 bg-white rounded-md shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Login Form</h2>
-      <form onSubmit={onSignInSubmit} className="space-y-4">
+      <form onSubmit={onSignInSubmit} className="  gap-4 space-y-4">
         <div id="sign-in-button"></div>
         <input
           type="number"
@@ -115,13 +117,14 @@ const PhoneSignUp = () => {
           type="submit" disabled = {loading}
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
         >
-           Click For OTP
+           
+           {loading ? 'loading..' : 'Click For OTP'}
           
         </button>
       </form>
         
       <h2 className="text-2xl font-semibold mt-8">Enter OTP</h2>
-      <form onSubmit={onSubmitOTP} className="space-y-4 p-3" >
+      <form onSubmit={onSubmitOTP} className=" space-y-4 p-3" >
         <input
           type="number"
           name="otp"
@@ -136,7 +139,7 @@ const PhoneSignUp = () => {
          
         >
           
-          Verify Otp
+          Verify OTP
         </button>
       </form>
     </div>
