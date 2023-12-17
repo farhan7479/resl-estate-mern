@@ -198,6 +198,14 @@ export default function Profile() {
           onChange={handleChange}
         />
         <input
+          type='text'
+          placeholder='Phone No.'
+          defaultValue={currentUser.phone}
+          id='phone'
+          className='border p-3 rounded-lg'
+          onChange={handleChange}
+        />
+        <input
           type='email'
           placeholder='email'
           id='email'

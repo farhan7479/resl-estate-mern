@@ -68,7 +68,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* swiper */}
+      {/* swiper
       <Swiper navigation>
         {offerListings &&
           offerListings.length > 0 &&
@@ -84,7 +84,7 @@ export default function Home() {
               ></div>
             </SwiperSlide>
           ))}
-      </Swiper>
+      </Swiper> */}
 
       {/* listing results for offer, sale and rent */}
 
