@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 export default function Contact({ listing }) {
   const [landlord, setLandlord] = useState(null);
   const [message, setMessage] = useState('');
+  const [ph , SetPh] = useState(false);
+
   const onChange = (e) => {
     setMessage(e.target.value);
   };
@@ -14,12 +16,14 @@ export default function Contact({ listing }) {
         const res = await fetch(`/api/user/${listing.userRef}`);
         const data = await res.json();
         setLandlord(data);
+        
       } catch (error) {
         console.log(error);
       }
     };
     fetchLandlord();
   }, [listing.userRef]);
+
   return (
     <>
       {landlord && (
@@ -38,13 +42,27 @@ export default function Contact({ listing }) {
             placeholder='Enter your message here...'
             className='w-full border p-3 rounded-lg'
           ></textarea>
-
+        <div className='flex p-3 gap-3'>
+          {landlord.phone ? (
+            <Link
+              to={`https://wa.me/${landlord.phone}?text=Regarding%20${encodeURIComponent(
+                listing.name
+              )}%0A${encodeURIComponent(message)}`}
+              className='bg-slate-700 text-white text-center p-3 uppercase rounded-lg hover:opacity-95'
+            >
+              Send Via WhatsApp
+            </Link>
+          ) : (
+            <p>First Update Phone No. </p>
+          )}
+         
           <Link
-          to={`mailto:${landlord.email}?subject=Regarding ${listing.name}&body=${message}`}
-          className='bg-slate-700 text-white text-center p-3 uppercase rounded-lg hover:opacity-95'
+            to={`mailto:${landlord.email}?subject=Regarding ${listing.name}&body=${message}`}
+            className='bg-slate-700 text-white text-center p-3 uppercase rounded-lg hover:opacity-95'
           >
-            Send Message          
+            Send  Via Email
           </Link>
+          </div>
         </div>
       )}
     </>
