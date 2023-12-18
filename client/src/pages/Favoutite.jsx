@@ -13,24 +13,24 @@ const Favourite = () => {
   };
 
   return (
-    <div className="container mx-auto mt-10">
+    <div className="container mx-auto mt-10 flex flex-col items-center">
       <h2 className="text-2xl font-semibold mb-4">Favourite Items</h2>
       {favourites.map((item) => (
-        <div key={item._id} className="border p-4 mb-8 flex items-center justify-center">
+        <div key={item._id} className="flex flex-row gap-4  border p-4 mb-8 items-center justify-center">
           <Link to={`/listing/${item._id}`}>
             {item.imageUrls && item.imageUrls.length > 0 && (
               <img
                 src={item.imageUrls[0]} // Display the first image from the array
                 alt={item.name}
-                className="w-32 h-24 object-cover rounded-lg mr-4" // Adjust size and shape as needed
+                className="w-32 h-24 object-cover rounded-lg mb-4" // Adjust size and shape as needed
               />
             )}
           </Link>
 
           {/* Item details */}
-          <div>
+          <div className="text-inline ">
             <Link to={`/listing/${item._id}`}>
-              <h3 className="text-xl font-semibold mb-2  hover:underline">{item.name}</h3>
+              <h3 className="text-xl font-semibold mb-2 hover:underline">{item.name}</h3>
             </Link>
             <p>{item.description}</p>
             <p>Regular Price: {item.regularPrice}</p>
