@@ -15,3 +15,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+//rzp_test_WAIdejL6H8KEUD
+//Fsc4DbyFS28coQTJZJw6kPlM

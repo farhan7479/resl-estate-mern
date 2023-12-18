@@ -2,6 +2,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from '../redux/user/cartSlice';
+import { Link } from 'react-router-dom';
 
 const Favourite = () => {
   const dispatch = useDispatch();
@@ -16,22 +17,25 @@ const Favourite = () => {
       <h2 className="text-2xl font-semibold mb-4">Favourite Items</h2>
       {favourites.map((item) => (
         <div key={item._id} className="border p-4 mb-8 flex items-center justify-center">
-        
-          {item.imageUrls && item.imageUrls.length > 0 && (
-            <img
-              src={item.imageUrls[0]} // Display the first image from the array
-              alt={item.name}
-              className="w-32 h-24 object-cover rounded-lg mr-4" // Adjust size and shape as needed
-            />
-          )}
+          <Link to={`/listing/${item._id}`}>
+            {item.imageUrls && item.imageUrls.length > 0 && (
+              <img
+                src={item.imageUrls[0]} // Display the first image from the array
+                alt={item.name}
+                className="w-32 h-24 object-cover rounded-lg mr-4" // Adjust size and shape as needed
+              />
+            )}
+          </Link>
 
           {/* Item details */}
           <div>
-            <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
+            <Link to={`/listing/${item._id}`}>
+              <h3 className="text-xl font-semibold mb-2  hover:underline">{item.name}</h3>
+            </Link>
             <p>{item.description}</p>
             <p>Regular Price: {item.regularPrice}</p>
             <p>Discount Price: {item.discountPrice}</p>
-            
+
             {/* Add more details as needed */}
             <button
               onClick={() => handleRemoveFromFavourites(item._id)}
